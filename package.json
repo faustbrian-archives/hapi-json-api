@@ -1,0 +1,96 @@
+{
+	"name": "@kodekeep/hapi-json-api",
+	"version": "0.1.2",
+	"description": "An implementation of the JSON API specification for building APIs with hapi.js",
+	"repository": "https://github.com/kodekeep/hapi-json-api",
+	"license": "MPL-2.0",
+	"author": "KodeKeep <hello@kodekeep.com>",
+	"files": [
+		"dist"
+	],
+	"main": "dist/index",
+	"types": "dist/index",
+	"scripts": {
+		"build": "yarn clean && tsc",
+		"build:watch": "yarn build -w",
+		"clean": "rimraf .coverage dist tmp",
+		"format": "yarn lint && yarn prettier",
+		"lint": "./node_modules/eslint/bin/eslint.js src --ext .ts --fix",
+		"prepublishOnly": "yarn test && yarn build",
+		"prettier": "prettier --write \"./*.{ts,js,json,md}\" \"./**/*.{ts,js,json,md}\"",
+		"test": "jest",
+		"test:watch": "jest --watchAll"
+	},
+	"jest": {
+		"bail": false,
+		"collectCoverage": false,
+		"collectCoverageFrom": [
+			"src/**/*.ts",
+			"!**/node_modules/**"
+		],
+		"coverageDirectory": "<rootDir>/.coverage",
+		"coverageReporters": [
+			"json",
+			"lcov",
+			"text",
+			"clover",
+			"html"
+		],
+		"moduleFileExtensions": [
+			"ts",
+			"tsx",
+			"js",
+			"jsx",
+			"json",
+			"node"
+		],
+		"setupFilesAfterEnv": [
+			"jest-extended"
+		],
+		"testEnvironment": "node",
+		"testMatch": [
+			"**/*.test.ts"
+		],
+		"transform": {
+			"^.+\\.tsx?$": "ts-jest"
+		},
+		"verbose": true
+	},
+	"dependencies": {
+		"@hapi/boom": "^9.0.0",
+		"@hapi/hapi": "^19.1.1",
+		"@hapi/hoek": "^9.0.3",
+		"@hapi/joi": "^17.1.0",
+		"accepts": "^1.3.7",
+		"ajv": "^6.11.0",
+		"json-api-serializer": "^2.3.0",
+		"lodash": "^4.17.15",
+		"media-type": "^0.3.1"
+	},
+	"devDependencies": {
+		"@sindresorhus/tsconfig": "^0.7.0",
+		"@types/accepts": "^1.3.5",
+		"@types/hapi__boom": "^9.0.1",
+		"@types/hapi__hapi": "^19.0.1",
+		"@types/hapi__hoek": "^9.0.1",
+		"@types/hapi__joi": "^16.0.10",
+		"@types/jest": "^25.1.2",
+		"@types/lodash": "^4.14.149",
+		"@types/node": "^13.7.1",
+		"@types/prettier": "^1.19.0",
+		"@types/rimraf": "^2.0.3",
+		"@typescript-eslint/eslint-plugin": "^2.19.2",
+		"@typescript-eslint/parser": "^2.19.2",
+		"eslint": "^6.8.0",
+		"eslint-config-prettier": "^6.10.0",
+		"eslint-plugin-jest": "^23.7.0",
+		"eslint-plugin-prettier": "^3.1.2",
+		"eslint-plugin-simple-import-sort": "^5.0.1",
+		"jest": "^25.1.0",
+		"jest-extended": "^0.11.5",
+		"prettier": "^1.19.1",
+		"rimraf": "^3.0.2",
+		"ts-jest": "^25.2.0",
+		"typescript": "^3.7.5"
+	}
+}
