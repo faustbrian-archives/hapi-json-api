@@ -1,13 +1,13 @@
 # @kodekeep/hapi-json-api
 
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/kodekeep/hapi-json-api/run-tests?label=tests)](https://github.com/kodekeep/hapi-json-api/actions?query=workflow%3Arun-tests+branch%3Amaster)
-[![Code Coverage](https://badgen.net/codecov/c/github/kodekeep/hapi-json-api)](https://codecov.io/gh/kodekeep/hapi-json-api)
-[![Minimum Node.js Version](https://badgen.net/npm/node/@kodekeep/hapi-json-api)](https://www.npmjs.com/package/@kodekeep/hapi-json-api)
-[![Latest Version](https://badgen.net/npm/v/@kodekeep/hapi-json-api)](https://www.npmjs.com/package/@kodekeep/hapi-json-api)
-[![Total Downloads](https://badgen.net/npm/dt/kodekeep/hapi-json-api)](https://npmjs.org/package/@kodekeep/hapi-json-api)
-[![License](https://badgen.net/npm/license/kodekeep/hapi-json-api)](https://npmjs.org/package/@kodekeep/hapi-json-api)
+[![Latest Version](https://badgen.net/npm/v/@kodekeep/hapi-json-api)](https://npmjs.com/package/@kodekeep/hapi-json-api)
+[![Software License](https://badgen.net/npm/license/@kodekeep/hapi-json-api)](https://npmjs.com/package/@kodekeep/hapi-json-api)
+[![Build Status](https://img.shields.io/github/workflow/status/kodekeep/hapi-json-api/run-tests?label=tests)](https://github.com/kodekeep/hapi-json-api/actions?query=workflow%3Arun-tests+branch%3Amaster)
+[![Coverage Status](https://badgen.net/codeclimate/coverage/kodekeep/hapi-json-api)](https://codeclimate.com/github/kodekeep/hapi-json-api)
+[![Quality Score](https://badgen.net/codeclimate/maintainability/kodekeep/hapi-json-api)](https://codeclimate.com/github/kodekeep/hapi-json-api)
+[![Total Downloads](https://badgen.net/npm/dt/kodekeep/hapi-json-api)](https://npmjs.com/package/@kodekeep/hapi-json-api)
 
-> An implementation of the JSON API specification for building APIs with hapi.js
+This package was created by, and is maintained by [Brian Faust](https://github.com/faustbrian), and provides an implementation of the JSON API specification for building APIs with hapi.
 
 ## Installation
 
@@ -37,6 +37,10 @@ If you discover a security vulnerability within this package, please send an e-m
 
 This project exists thanks to all the people who [contribute](../../contributors).
 
+## Support Us
+
+We invest a lot of resources into creating and maintaining our packages. You can support us and the development through [GitHub Sponsors](https://github.com/sponsors/faustbrian).
+
 ## License
 
-Mozilla Public License Version 2.0 (MPL-2.0). Please see [License File](LICENSE.md) for more information.
+hapi JSON-API is an open-sourced software licensed under the [MPL-2.0](LICENSE.md).
