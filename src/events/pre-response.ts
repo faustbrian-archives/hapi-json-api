@@ -2,7 +2,7 @@ import Hapi from "@hapi/hapi";
 import { config } from "../config";
 import { wrapResponse } from "../helpers";
 
-const setHeader = value => {
+const setHeader = (value) => {
 	const header = "application/vnd.api+json";
 	value.headers["content-type"] = header;
 	value.headers.accept = header;
@@ -25,7 +25,12 @@ const handleBoom = (request, meta) => {
 
 	if (response.data) {
 		if (output.statusCode === 500) {
-			request.log("error", response.data instanceof Buffer ? response.data.toString() : response.data);
+			request.log(
+				"error",
+				response.data instanceof Buffer
+					? response.data.toString()
+					: response.data
+			);
 		}
 	}
 
@@ -36,7 +41,8 @@ const handleJoi = (request, meta) => {
 	const { response } = request;
 	const { output } = response;
 
-	const getErrorMessage = details => `${details.message} (${details.path.join(".")})`;
+	const getErrorMessage = (details) =>
+		`${details.message} (${details.path.join(".")})`;
 
 	const error: any = {
 		title: output.payload.error,
@@ -69,7 +75,11 @@ const handleSuccess = (request, meta) => {
 					: wrapResponse({ data: response.source });
 		}
 
-		response.source.meta = { ...response.source.meta, id: request.info.id, ...meta };
+		response.source.meta = {
+			...response.source.meta,
+			id: request.info.id,
+			...meta,
+		};
 	}
 
 	setHeader(response);

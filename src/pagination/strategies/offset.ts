@@ -7,10 +7,12 @@ class OffsetStrategy extends Strategy {
 		this.setRequest(request);
 
 		const offsetKey = "strategies.offset.offset";
-		const offset = get(routeOptions, offsetKey) || config.get(`pagination.${offsetKey}`);
+		const offset =
+			get(routeOptions, offsetKey) || config.get(`pagination.${offsetKey}`);
 
 		const limitKey = "strategies.offset.limit";
-		const limit = get(routeOptions, limitKey) || config.get(`pagination.${limitKey}`);
+		const limit =
+			get(routeOptions, limitKey) || config.get(`pagination.${limitKey}`);
 
 		this.setQueryParameter("page[offset]", offset);
 		this.setQueryParameter("page[limit]", limit);

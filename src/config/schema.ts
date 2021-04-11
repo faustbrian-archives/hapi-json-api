@@ -24,9 +24,7 @@ export const configSchema = Joi.object({
 		 *
 		 * https://jsonapi.org/format/#fetching-pagination
 		 */
-		strategy: Joi.string()
-			.valid("page", "offset", "cursor")
-			.default("page"),
+		strategy: Joi.string().valid("page", "offset", "cursor").default("page"),
 		/**
 		 * The strategies that can be used to paginate records.
 		 */
@@ -35,34 +33,21 @@ export const configSchema = Joi.object({
 			 * The options for a page based strategy.
 			 */
 			page: Joi.object({
-				number: Joi.number()
-					.integer()
-					.positive()
-					.default(1),
-				size: Joi.number()
-					.integer()
-					.positive()
-					.default(100),
+				number: Joi.number().integer().positive().default(1),
+				size: Joi.number().integer().positive().default(100),
 			}).default(),
 			/**
 			 * The options for an offsett based strategy.
 			 */
 			offset: Joi.object({
-				offset: Joi.number()
-					.integer()
-					.default(0),
-				limit: Joi.number()
-					.integer()
-					.positive()
-					.default(100),
+				offset: Joi.number().integer().default(0),
+				limit: Joi.number().integer().positive().default(100),
 			}).default(),
 			/**
 			 * The options for a cursor based strategy.
 			 */
 			cursor: Joi.object({
-				cursor: Joi.number()
-					.integer()
-					.default(0),
+				cursor: Joi.number().integer().default(0),
 			}).default(),
 		}).default(),
 		/**
@@ -73,13 +58,17 @@ export const configSchema = Joi.object({
 			 * The routes that are included into any processing.
 			 */
 			include: Joi.array()
-				.items(Joi.alternatives().try(Joi.object().instance(RegExp), Joi.string()))
+				.items(
+					Joi.alternatives().try(Joi.object().instance(RegExp), Joi.string())
+				)
 				.default(["*"]),
 			/**
 			 * The routes that are excluded from any processing.
 			 */
 			exclude: Joi.array()
-				.items(Joi.alternatives().try(Joi.object().instance(RegExp), Joi.string()))
+				.items(
+					Joi.alternatives().try(Joi.object().instance(RegExp), Joi.string())
+				)
 				.default([]),
 		}).default(),
 	}).default(),

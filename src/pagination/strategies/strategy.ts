@@ -37,7 +37,9 @@ export class Strategy {
 	}
 
 	public getFullUri(query) {
-		const baseUri = `${config.get("pagination.uri")}${this.request.url.pathname}?`;
+		const baseUri = `${config.get("pagination.uri")}${
+			this.request.url.pathname
+		}?`;
 		const baseQuery = { ...this.request.query, ...this.request.orig.query };
 
 		return baseUri + qs.stringify(Hoek.applyToDefaults(baseQuery, query));

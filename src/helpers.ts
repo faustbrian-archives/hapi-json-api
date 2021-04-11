@@ -1,4 +1,4 @@
-export const wrapResponse = data => ({
+export const wrapResponse = (data) => ({
 	...{ jsonapi: { version: "1.0" } },
 	...data,
 });

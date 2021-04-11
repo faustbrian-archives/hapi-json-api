@@ -7,10 +7,13 @@ class PageStrategy extends Strategy {
 		this.setRequest(request);
 
 		const pageNumberKey = "strategies.page.number";
-		const pageNumber = get(routeOptions, pageNumberKey) || config.get(`pagination.${pageNumberKey}`);
+		const pageNumber =
+			get(routeOptions, pageNumberKey) ||
+			config.get(`pagination.${pageNumberKey}`);
 
 		const sizeKey = "strategies.page.size";
-		const size = get(routeOptions, sizeKey) || config.get(`pagination.${sizeKey}`);
+		const size =
+			get(routeOptions, sizeKey) || config.get(`pagination.${sizeKey}`);
 
 		this.setQueryParameter("page[number]", +pageNumber);
 		this.setQueryParameter("page[size]", +size);
@@ -26,10 +29,12 @@ class PageStrategy extends Strategy {
 		const currentPage = this.request.query["page[number]"];
 		const currentSize = this.request.query["page[size]"];
 
-		const numberOfRecords = source.numberOfRecords || this.request.numberOfRecords;
+		const numberOfRecords =
+			source.numberOfRecords || this.request.numberOfRecords;
 
 		const numberOfPages = numberOfRecords
-			? Math.trunc(numberOfRecords / currentSize) + (numberOfRecords % currentSize === 0 ? 0 : 1)
+			? Math.trunc(numberOfRecords / currentSize) +
+			  (numberOfRecords % currentSize === 0 ? 0 : 1)
 			: 0;
 
 		const hasMore = numberOfRecords !== 0 && currentPage < numberOfPages;

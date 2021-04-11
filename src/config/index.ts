@@ -16,7 +16,7 @@ class Config {
 			return;
 		}
 
-		const routeSettings = server.table().map(item => item.settings);
+		const routeSettings = server.table().map((item) => item.settings);
 
 		for (const routeSetting of routeSettings) {
 			// @ts-ignore

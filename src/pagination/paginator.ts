@@ -16,7 +16,9 @@ class Paginator {
 	}
 
 	public containsPath(path, array) {
-		return some(array, item => (item instanceof RegExp ? item.test(path) : item === path));
+		return some(array, (item) =>
+			item instanceof RegExp ? item.test(path) : item === path
+		);
 	}
 
 	public isValidRoute(request) {
@@ -82,7 +84,10 @@ class Paginator {
 	public onPostHandler(request, h) {
 		const statusCode = request.response.statusCode;
 		const processResponse =
-			this.isValidRoute(request) && statusCode >= 200 && statusCode <= 299 && this.getPagination(request);
+			this.isValidRoute(request) &&
+			statusCode >= 200 &&
+			statusCode <= 299 &&
+			this.getPagination(request);
 
 		if (!processResponse) {
 			return h.continue;

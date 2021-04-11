@@ -7,7 +7,8 @@ class CursorStrategy extends Strategy {
 		this.setRequest(request);
 
 		const cursorKey = "strategies.cursor.cursor";
-		const cursor = get(routeOptions, cursorKey) || config.get(`pagination.${cursorKey}`);
+		const cursor =
+			get(routeOptions, cursorKey) || config.get(`pagination.${cursorKey}`);
 
 		this.setQueryParameter("page[cursor]", cursor);
 

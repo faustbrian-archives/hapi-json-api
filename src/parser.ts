@@ -41,7 +41,7 @@ export class Parser {
 	public static include(request: any) {
 		const parameters = request.query.include || "";
 
-		return parameters.split(",").map(parameter => ({
+		return parameters.split(",").map((parameter) => ({
 			relationship: parameter,
 		}));
 	}
@@ -69,7 +69,7 @@ export class Parser {
 	public static sort(request: any) {
 		const parameters = request.query.sort || "";
 
-		return parameters.split(",").map(parameter => ({
+		return parameters.split(",").map((parameter) => ({
 			field: parameter.startsWith("-") ? parameter.substr(1) : parameter,
 			ascending: !parameter.startsWith("-"),
 		}));

@@ -2,14 +2,10 @@
 	"name": "@konceiver/hapi-json-api",
 	"version": "1.0.0",
 	"description": "An implementation of the JSON API specification for building APIs with hapi.js",
-	"repository": "https://github.com/konceiver/hapi-json-api",
 	"license": "MIT",
+	"repository": "https://github.com/konceiver/hapi-json-api",
 	"author": "Konceiver Oy <info@konceiver.dev>",
 	"main": "dist/index",
-	"types": "dist/index",
-	"files": [
-		"dist"
-	],
 	"scripts": {
 		"build": "tease build",
 		"format": "tease format",
@@ -19,6 +15,9 @@
 		"specs": "tease specs",
 		"test": "tease test"
 	},
+	"files": [
+		"dist"
+	],
 	"dependencies": {
 		"@hapi/boom": "^9.1.0",
 		"@hapi/hapi": "^20.0.3",
@@ -38,5 +37,6 @@
 		"@types/hapi__hoek": "^9.0.1",
 		"@types/hapi__joi": "^17.1.6",
 		"@types/lodash": "^4.14.165"
-	}
+	},
+	"types": "dist/index"
 }

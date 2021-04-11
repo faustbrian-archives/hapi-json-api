@@ -19,7 +19,10 @@ export const plugin = {
 		}
 
 		// Configure Pagination...
-		config.set("pagination.uri", config.get("pagination.baseUri", server.info.uri));
+		config.set(
+			"pagination.uri",
+			config.get("pagination.baseUri", server.info.uri)
+		);
 
 		paginator.init();
 

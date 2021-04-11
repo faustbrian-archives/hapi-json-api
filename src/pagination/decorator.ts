@@ -15,7 +15,8 @@ export default () => {
 				throw Boom.internal(`key: ${key} does not exists on response`);
 			}
 
-			const results = key && !Array.isArray(response) ? response[key] : response;
+			const results =
+				key && !Array.isArray(response) ? response[key] : response;
 
 			if (key && !Array.isArray(response)) {
 				delete response[key];

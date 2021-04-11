@@ -5,13 +5,15 @@ import { paginator } from "../pagination/paginator";
 import { Parser } from "../parser";
 import { onPreHandler as validator } from "../validator";
 
-const handleAcceptHeader = request => {
+const handleAcceptHeader = (request) => {
 	if (request.headers.accept.indexOf("application/vnd.api+json") === -1) {
-		throw Boom.notAcceptable('Expected accept header to be "application/vnd.api+json"');
+		throw Boom.notAcceptable(
+			'Expected accept header to be "application/vnd.api+json"'
+		);
 	}
 };
 
-const handleContentTypeHeader = request => {
+const handleContentTypeHeader = (request) => {
 	const contentMedia = MediaType.fromString(request.headers["content-type"]);
 
 	if (contentMedia.parameters.charset === "UTF-8") {
@@ -23,7 +25,9 @@ const handleContentTypeHeader = request => {
 	const hasInvalidParameters = Object.keys(contentMedia.parameters).length > 0;
 
 	if (hasInvalidType || hasInvalidSubType || hasInvalidParameters) {
-		throw Boom.unsupportedMediaType('Expected content-type header to be "application/vnd.api+json"');
+		throw Boom.unsupportedMediaType(
+			'Expected content-type header to be "application/vnd.api+json"'
+		);
 	}
 };
 
