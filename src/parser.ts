@@ -56,8 +56,8 @@ export class Parser {
 				// @ts-ignore
 				const parameter = key.match(/\[(.*?)\]/)[1];
 
-				if (allowed.includes(parameter)) {
-					matches[parameter] = +value;
+				if (allowed.includes(parameter!)) {
+					matches[parameter!] = +value;
 				}
 			}
 		}
