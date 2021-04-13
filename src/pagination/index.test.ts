@@ -624,7 +624,12 @@ describe("Passing page and limit as query parameters", () => {
 
 describe("Test /users route", () => {
 	it("Test default with totalCount added to request object", async () => {
-		const urlForPage = page => ["http://localhost/users?", `page%5Bnumber%5D=${page}`, "&", "page%5Bsize%5D=5"];
+		const urlForPage = (page) => [
+			"http://localhost/users?",
+			`page%5Bnumber%5D=${page}`,
+			"&",
+			"page%5Bsize%5D=5",
+		];
 
 		const server = createServer();
 		await server.register(plugin);
@@ -836,7 +841,7 @@ describe("Wrong options", () => {
 						},
 					},
 				},
-			}),
+			})
 		).rejects.toThrow();
 	});
 });
@@ -887,7 +892,8 @@ describe("Results with other keys", () => {
 		server.route({
 			method: "GET",
 			path: "/error",
-			handler: (_request, h: any) => h.withPagination({ results: [] }, 0, { key: "res" }),
+			handler: (_request, h: any) =>
+				h.withPagination({ results: [] }, 0, { key: "res" }),
 		});
 
 		const request = {
@@ -908,7 +914,9 @@ describe("Results with other keys", () => {
 			method: "GET",
 			path: "/nooverride",
 			handler: (_request, h: any) =>
-				h.withPagination({ res: [], results: "results", meta: "meta" }, 0, { key: "res" }),
+				h.withPagination({ res: [], results: "results", meta: "meta" }, 0, {
+					key: "res",
+				}),
 		});
 
 		const request = {
@@ -1001,7 +1009,12 @@ describe("Empty baseUri should give relative url", () => {
 			},
 		};
 
-		const urlForPage = page => ["/users?", `page%5Bnumber%5D=${page}`, "&", "page%5Bsize%5D=5"];
+		const urlForPage = (page) => [
+			"/users?",
+			`page%5Bnumber%5D=${page}`,
+			"&",
+			"page%5Bsize%5D=5",
+		];
 
 		const server = createServer();
 		await server.register({
@@ -1026,7 +1039,7 @@ describe("Should include original values of query parameters in pagination urls 
 	const urlPrefixLen = urlPrefix.length;
 	const expectedCount = 3;
 
-	const splitParams = url => {
+	const splitParams = (url) => {
 		// expect(url).toStartWith(urlPrefix)
 		return url.substr(urlPrefixLen).split("&");
 	};
@@ -1080,7 +1093,9 @@ describe("Should include original values of query parameters in pagination urls 
 	});
 
 	it("Should include objects in pagination urls", async () => {
-		const objectQuery = `testObject=${encodeURIComponent(JSON.stringify({ a: 1, b: 2 }))}`;
+		const objectQuery = `testObject=${encodeURIComponent(
+			JSON.stringify({ a: 1, b: 2 })
+		)}`;
 
 		const server = createServer();
 		await server.register(plugin);

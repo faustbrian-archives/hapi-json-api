@@ -54,7 +54,7 @@ const setupServer = () => {
 	server.route({
 		method: "GET",
 		path: "/transformers/resource",
-		handler: request => {
+		handler: (request) => {
 			const { Resource } = request.server.plugins["@konceiver/hapi-json-api"];
 
 			return {
@@ -72,7 +72,7 @@ const setupServer = () => {
 	server.route({
 		method: "GET",
 		path: "/transformers/collection",
-		handler: request => {
+		handler: (request) => {
 			const { Collection } = request.server.plugins["@konceiver/hapi-json-api"];
 
 			return {
@@ -101,35 +101,50 @@ const setupServer = () => {
 		},
 	});
 
-	server.route({ method: "OPTIONS", path: "/ok", handler: () => ({ data: { id: "ok", type: "response" } }) });
-	server.route({ method: "GET", path: "/ok", handler: () => ({ data: { id: "ok", type: "response" } }) });
-	server.route({ method: "POST", path: "/post", handler: () => ({ data: { id: "post", type: "response" } }) });
-	server.route({ method: "GET", path: "/auth", handler: () => Boom.unauthorized() });
-	server.route({ method: "DELETE", path: "/delete", handler: (_request, h) => h.response().code(204) });
+	server.route({
+		method: "OPTIONS",
+		path: "/ok",
+		handler: () => ({ data: { id: "ok", type: "response" } }),
+	});
+	server.route({
+		method: "GET",
+		path: "/ok",
+		handler: () => ({ data: { id: "ok", type: "response" } }),
+	});
+	server.route({
+		method: "POST",
+		path: "/post",
+		handler: () => ({ data: { id: "post", type: "response" } }),
+	});
+	server.route({
+		method: "GET",
+		path: "/auth",
+		handler: () => Boom.unauthorized(),
+	});
+	server.route({
+		method: "DELETE",
+		path: "/delete",
+		handler: (_request, h) => h.response().code(204),
+	});
 	server.route({
 		method: "GET",
 		path: "/text",
 		handler: (_request, h) =>
-			h
-				.response("ok")
-				.code(200)
-				.header("Content-Type", "text/plain"),
+			h.response("ok").code(200).header("Content-Type", "text/plain"),
 	});
 
 	// @ts-ignore
 	server.route({
 		method: "GET",
 		path: "/joi/{name}",
-		handler: request => ({
+		handler: (request) => ({
 			data: `Hello ${request.params.name}!`,
 		}),
 		options: {
 			validate: {
 				failAction: (_req, _h, err) => err,
 				params: Joi.object({
-					name: Joi.string()
-						.min(3)
-						.max(10),
+					name: Joi.string().min(3).max(10),
 				}),
 			},
 		},
@@ -203,7 +218,11 @@ describe("Meta", () => {
 				},
 			});
 
-			expectErrorResponse(response, 415, 'Expected content-type header to be "application/vnd.api+json"');
+			expectErrorResponse(
+				response,
+				415,
+				'Expected content-type header to be "application/vnd.api+json"'
+			);
 		});
 
 		test("invalid type", async () => {
@@ -217,7 +236,11 @@ describe("Meta", () => {
 				},
 			});
 
-			expectErrorResponse(response, 415, 'Expected content-type header to be "application/vnd.api+json"');
+			expectErrorResponse(
+				response,
+				415,
+				'Expected content-type header to be "application/vnd.api+json"'
+			);
 		});
 
 		test("invalid sub-type", async () => {
@@ -231,7 +254,11 @@ describe("Meta", () => {
 				},
 			});
 
-			expectErrorResponse(response, 415, 'Expected content-type header to be "application/vnd.api+json"');
+			expectErrorResponse(
+				response,
+				415,
+				'Expected content-type header to be "application/vnd.api+json"'
+			);
 		});
 
 		test("media type", async () => {
@@ -347,7 +374,8 @@ describe("Meta", () => {
 				{
 					detail:
 						'child "name" fails because ["name" length must be less than or equal to 10 characters long]',
-					details: '"name" length must be less than or equal to 10 characters long (name)',
+					details:
+						'"name" length must be less than or equal to 10 characters long (name)',
 					status: 400,
 					title: "Bad Request",
 				},
@@ -366,7 +394,10 @@ describe("Meta", () => {
 			});
 
 			expectSuccessResponse(response, payload);
-			expect(payload.data).toEqual([{ field: "created", ascending: false }, { field: "title", ascending: true }]);
+			expect(payload.data).toEqual([
+				{ field: "created", ascending: false },
+				{ field: "title", ascending: true },
+			]);
 		});
 	});
 
@@ -381,7 +412,10 @@ describe("Meta", () => {
 			});
 
 			expectSuccessResponse(response, payload);
-			expect(payload.data).toEqual([{ relationship: "author" }, { relationship: "comments.author" }]);
+			expect(payload.data).toEqual([
+				{ relationship: "author" },
+				{ relationship: "comments.author" },
+			]);
 		});
 	});
 
@@ -396,7 +430,10 @@ describe("Meta", () => {
 			});
 
 			expectSuccessResponse(response, payload);
-			expect(payload.data).toEqual([{ field: "firstname", value: "John" }, { field: "lastname", value: "Doe" }]);
+			expect(payload.data).toEqual([
+				{ field: "firstname", value: "John" },
+				{ field: "lastname", value: "Doe" },
+			]);
 		});
 	});
 

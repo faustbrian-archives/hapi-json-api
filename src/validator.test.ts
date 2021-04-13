@@ -88,7 +88,12 @@ const sendRequest = async ({
 		},
 	});
 
-	return server.inject({ method, url, payload: {}, headers: { "Content-Type": "application/vnd.api+json" } });
+	return server.inject({
+		method,
+		url,
+		payload: {},
+		headers: { "Content-Type": "application/vnd.api+json" },
+	});
 };
 
 const expect422 = (response: any) => {

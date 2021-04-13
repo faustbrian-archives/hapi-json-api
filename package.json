@@ -11,7 +11,7 @@
 		"format": "tease format",
 		"lint": "tease lint",
 		"prepare": "tease install && tease build",
-		"publish": "tease publish",
+		"publish": "npm run prepare && npm publish --access=public",
 		"specs": "tease specs",
 		"test": "tease test"
 	},
@@ -30,7 +30,7 @@
 		"media-type": "^0.3.1"
 	},
 	"devDependencies": {
-		"@konceiver/tease": "^1.6.1",
+		"@konceiver/tease": "^2.0.0",
 		"@types/accepts": "^1.3.5",
 		"@types/hapi__boom": "^9.0.1",
 		"@types/hapi__hapi": "^20.0.3",

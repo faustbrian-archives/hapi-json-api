@@ -44,7 +44,7 @@ const dummyResource: object = {
 
 let server: Hapi.Server;
 
-const sendRequest = handler => {
+const sendRequest = (handler) => {
 	server.route({
 		method: "GET",
 		path: "/",
@@ -153,7 +153,9 @@ beforeEach(async () => {
 
 describe("Serializer", () => {
 	it("should transform a resource and reply", async () => {
-		const { result }: any = await sendRequest((_, h) => h.withJSON("article", dummyResource));
+		const { result }: any = await sendRequest((_, h) =>
+			h.withJSON("article", dummyResource)
+		);
 
 		delete result.meta.id;
 		delete serializerResource.meta.id;
@@ -162,7 +164,9 @@ describe("Serializer", () => {
 	});
 
 	it("should transform a collection and reply", async () => {
-		const { result }: any = await sendRequest((_, h) => h.withJSON("article", [dummyResource, dummyResource]));
+		const { result }: any = await sendRequest((_, h) =>
+			h.withJSON("article", [dummyResource, dummyResource])
+		);
 
 		delete result.meta.id;
 		delete serializerCollection.meta.id;
@@ -172,13 +176,16 @@ describe("Serializer", () => {
 
 	it("should transform and reply with extraData", async () => {
 		const { result }: any = await sendRequest((_, h) =>
-			h.withJSON("article", [dummyResource, dummyResource], { count: 2 }),
+			h.withJSON("article", [dummyResource, dummyResource], { count: 2 })
 		);
 
 		delete result.meta.id;
 		delete serializerCollection.meta.id;
 
-		expect(result).toEqual({ ...serializerCollection, ...{ meta: { count: 2, total: 2 } } });
+		expect(result).toEqual({
+			...serializerCollection,
+			...{ meta: { count: 2, total: 2 } },
+		});
 	});
 
 	it("should transform and reply with custom statuscode", async () => {

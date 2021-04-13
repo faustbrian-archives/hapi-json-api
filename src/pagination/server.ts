@@ -77,7 +77,7 @@ export const createServer = () => {
 				return h.withPagination(
 					{ results: response, otherKey: "otherKey", otherKey2: "otherKey2" },
 					users.length,
-					{ key: "results" },
+					{ key: "results" }
 				);
 			}
 
@@ -218,7 +218,8 @@ export const createServer = () => {
 	server.route({
 		method: "GET",
 		path: "/custom-header",
-		handler: (_request: any, h: any) => h.withPagination([{}, {}, {}], 3).header("custom-header", "pizza"),
+		handler: (_request: any, h: any) =>
+			h.withPagination([{}, {}, {}], 3).header("custom-header", "pizza"),
 	});
 
 	return server;
