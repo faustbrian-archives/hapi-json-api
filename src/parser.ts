@@ -9,7 +9,7 @@ export class Parser {
 			if (RegExp(pattern).test(key)) {
 				matches.push({
 					// @ts-ignore
-					type: key.match(/\[(.*?)\]/)[1],
+					type: /\[(.*?)\]/.exec(key)[1],
 					// @ts-ignore
 					fields: value.split(","),
 				});
@@ -27,7 +27,7 @@ export class Parser {
 			if (RegExp(pattern).test(key)) {
 				matches.push({
 					// @ts-ignore
-					field: key.match(/\[(.*?)\]/)[1],
+					field: /\[(.*?)\]/.exec(key)[1],
 					// @ts-ignore
 					value,
 				});
@@ -54,7 +54,7 @@ export class Parser {
 		for (const [key, value] of Object.entries(request.query)) {
 			if (RegExp(pattern).test(key)) {
 				// @ts-ignore
-				const parameter = key.match(/\[(.*?)\]/)[1];
+				const parameter = /\[(.*?)\]/.exec(key)[1];
 
 				if (allowed.includes(parameter!)) {
 					matches[parameter!] = +value;

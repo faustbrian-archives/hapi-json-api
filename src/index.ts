@@ -1,4 +1,7 @@
+/* eslint-disable @typescript-eslint/unbound-method */
+
 import Serializer from "json-api-serializer";
+
 import { config } from "./config";
 import { onPostHandler } from "./events/post-handler";
 import { onPreHandler } from "./events/pre-handler";

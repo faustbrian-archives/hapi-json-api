@@ -1,5 +1,6 @@
 import Hapi from "@hapi/hapi";
 import { get, set } from "lodash";
+
 import { configSchema, routeSchema } from "./schema";
 
 class Config {

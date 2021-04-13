@@ -1,6 +1,7 @@
 import { Request, ResponseToolkit } from "@hapi/hapi";
 import AJV, { ErrorObject } from "ajv";
 import { get } from "lodash";
+
 import { IValidationError } from "./interfaces";
 
 const mapErrors = (type: string, errors: ErrorObject[]): any[] => {

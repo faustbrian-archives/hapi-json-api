@@ -1,4 +1,5 @@
 import { some } from "lodash";
+
 import { config } from "../config";
 import { cursorStrategy } from "./strategies/cursor";
 import { offsetStrategy } from "./strategies/offset";

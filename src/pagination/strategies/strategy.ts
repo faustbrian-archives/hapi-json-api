@@ -2,6 +2,7 @@ import Boom from "@hapi/boom";
 import Hapi from "@hapi/hapi";
 import Hoek from "@hapi/hoek";
 import * as qs from "querystring";
+
 import { config } from "../../config";
 
 export class Strategy {
@@ -23,7 +24,7 @@ export class Strategy {
 	}
 
 	public setQueryParameter(name, defaultValue) {
-		let value: number = 0;
+		let value = 0;
 
 		if (this.request.query[name] || this.request.query[name] === 0) {
 			value = parseInt(this.request.query[name], 10);

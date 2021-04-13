@@ -1,6 +1,7 @@
 import Boom from "@hapi/boom";
 import Hapi from "@hapi/hapi";
 import * as MediaType from "media-type";
+
 import { paginator } from "../pagination/paginator";
 import { Parser } from "../parser";
 import { onPreHandler as validator } from "../validator";

@@ -3,6 +3,7 @@ import "jest-extended";
 import Boom from "@hapi/boom";
 import Hapi from "@hapi/hapi";
 import Joi from "@hapi/joi";
+
 import { plugin } from "../src";
 import { sendRequest } from "./__support__/utils";
 

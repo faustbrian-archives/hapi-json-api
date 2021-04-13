@@ -507,7 +507,7 @@ describe("Passing page and limit as query parameters", () => {
 	it("Passing limit", async () => {
 		const server = createServer();
 
-		server.register(plugin);
+		await server.register(plugin);
 
 		const { query } = await sendRequest(server, {
 			method: "GET",

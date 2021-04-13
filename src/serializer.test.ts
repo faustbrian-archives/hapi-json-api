@@ -1,4 +1,5 @@
 import Hapi from "@hapi/hapi";
+
 import { plugin } from "../src";
 import { serializerCollection } from "./fixtures/serializer/collection";
 import { serializerResource } from "./fixtures/serializer/resource";

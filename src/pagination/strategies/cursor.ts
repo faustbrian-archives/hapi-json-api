@@ -1,4 +1,5 @@
 import { get } from "lodash";
+
 import { config } from "../../config";
 import { Strategy } from "./strategy";
 

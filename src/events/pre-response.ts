@@ -1,4 +1,5 @@
 import Hapi from "@hapi/hapi";
+
 import { config } from "../config";
 import { wrapResponse } from "../helpers";
 

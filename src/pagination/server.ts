@@ -47,7 +47,7 @@ export const createServer = () => {
 			const response: Array<{ name: string; username: string }> = [];
 
 			for (let i = offset; i < offset + limit && i < users.length; ++i) {
-				response.push(users[i]);
+				response.push(users[i]!);
 			}
 
 			if (pagination) {
@@ -70,7 +70,7 @@ export const createServer = () => {
 			const response: Array<{ name: string; username: string }> = [];
 
 			for (let i = offset; i < offset + limit && i < users.length; ++i) {
-				response.push(users[i]);
+				response.push(users[i]!);
 			}
 
 			if (pagination) {
@@ -157,7 +157,7 @@ export const createServer = () => {
 			const response: Array<{ name: string; username: string }> = [];
 
 			for (let i = offset; i < offset + limit && i < users.length; ++i) {
-				response.push(users[i]);
+				response.push(users[i]!);
 			}
 
 			if (pagination) {

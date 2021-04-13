@@ -1,4 +1,5 @@
 import Hapi from "@hapi/hapi";
+
 import { plugin } from "../src";
 
 const schema: object = {

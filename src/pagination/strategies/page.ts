@@ -1,4 +1,5 @@
 import { get } from "lodash";
+
 import { config } from "../../config";
 import { Strategy } from "./strategy";
 
@@ -32,10 +33,14 @@ class PageStrategy extends Strategy {
 		const numberOfRecords =
 			source.numberOfRecords || this.request.numberOfRecords;
 
-		const numberOfPages = numberOfRecords
-			? Math.trunc(numberOfRecords / currentSize) +
-			  (numberOfRecords % currentSize === 0 ? 0 : 1)
-			: 0;
+		let numberOfPages = 0;
+
+		if (numberOfRecords) {
+			const totalPages = Math.trunc(numberOfRecords / currentSize);
+
+			numberOfPages =
+				totalPages + (numberOfRecords % currentSize === 0 ? 0 : 1);
+		}
 
 		const hasMore = numberOfRecords !== 0 && currentPage < numberOfPages;
 
