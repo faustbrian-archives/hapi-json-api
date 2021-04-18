@@ -143,7 +143,9 @@ const setupServer = () => {
 		}),
 		options: {
 			validate: {
+				// @ts-ignore
 				failAction: (_req, _h, err) => err,
+				// @ts-ignore
 				params: Joi.object({
 					name: Joi.string().min(3).max(10),
 				}),

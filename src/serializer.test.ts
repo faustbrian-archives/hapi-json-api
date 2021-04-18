@@ -159,6 +159,7 @@ describe("Serializer", () => {
 		);
 
 		delete result.meta.id;
+		// @ts-ignore
 		delete serializerResource.meta.id;
 
 		expect(result).toEqual(serializerResource);
@@ -170,6 +171,7 @@ describe("Serializer", () => {
 		);
 
 		delete result.meta.id;
+		// @ts-ignore
 		delete serializerCollection.meta.id;
 
 		expect(result).toEqual(serializerCollection);
@@ -181,6 +183,7 @@ describe("Serializer", () => {
 		);
 
 		delete result.meta.id;
+		// @ts-ignore
 		delete serializerCollection.meta.id;
 
 		expect(result).toEqual({
@@ -195,6 +198,7 @@ describe("Serializer", () => {
 		});
 
 		delete result.meta.id;
+		// @ts-ignore
 		delete serializerResource.meta.id;
 
 		expect(result).toEqual(serializerResource);
